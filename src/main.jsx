@@ -10,6 +10,7 @@ import AddMovie from './components/AddMovie.jsx';
 import Home from './components/Home.jsx';
 import AllMovies from './components/AllMovies.jsx';
 import MovieDetails from './components/MovieDetails.jsx';
+import FavoriteMovies from './components/FavoriteMovies.jsx';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,13 @@ const router = createBrowserRouter([
         element: <MovieDetails></MovieDetails>,
         loader: async ({params}) => {
           return await fetch(`http://localhost:3000/movies/${params.id}`)
+        }
+      },
+      {
+        path:"/favoriteMovies",
+        element:<FavoriteMovies></FavoriteMovies>,
+        loader: async () =>{
+          return await fetch("http://localhost:3000/favoriteMovies")
         }
       }
     ]
