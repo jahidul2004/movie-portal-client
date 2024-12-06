@@ -9,6 +9,7 @@ import MainLayout from './mainlayout/MainLayout.jsx';
 import AddMovie from './components/AddMovie.jsx';
 import Home from './components/Home.jsx';
 import AllMovies from './components/AllMovies.jsx';
+import MovieDetails from './components/MovieDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,13 @@ const router = createBrowserRouter([
         element:<AllMovies></AllMovies>,
         loader: async () =>{
           return await fetch("http://localhost:3000/movies")
+        }
+      },
+      {
+        path: "/movies/:id",
+        element: <MovieDetails></MovieDetails>,
+        loader: async ({params}) => {
+          return await fetch(`http://localhost:3000/movies/${params.id}`)
         }
       }
     ]

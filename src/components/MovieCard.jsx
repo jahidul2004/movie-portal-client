@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const MovieCard = ({ movie }) => {
     return (
         <div className="shadow-xl p-5 rounded-lg">
@@ -16,13 +18,16 @@ const MovieCard = ({ movie }) => {
                 <div className="font-semibold my-2">
                     <h1>Duration:{movie.duration}Hours</h1>
                     <h1>Release Year:{movie.releaseYear}</h1>
-                    <h1>{movie.rating}</h1>
+                    <h1>Rating:{movie.rating}</h1>
                 </div>
             </div>
 
-            <button className="mt-3 w-max btn bg-[#e50912] text-white">
+            <Link
+                to={`/movies/${movie._id}`}
+                className="mt-3 w-max btn bg-[#e50912] text-white"
+            >
                 See Details
-            </button>
+            </Link>
         </div>
     );
 };
