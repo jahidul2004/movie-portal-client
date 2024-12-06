@@ -1,7 +1,38 @@
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const MovieDetails = () => {
     const movieDetails = useLoaderData();
+    console.log(movieDetails);
+
+    const handleAddFavorites = () => {
+        fetch("http://localhost:3000/favoriteMovies", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(movieDetails),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                if (data.acknowledged) {
+                    Swal.fire({
+                        title: "Success!!",
+                        text: "Movie added to favorites",
+                        icon: "success",
+                        confirmButtonText: "Close",
+                    });
+                } else {
+                    Swal.fire({
+                        title: "Error!",
+                        text: data.message,
+                        icon: "error",
+                        confirmButtonText: "Close",
+                    });
+                }
+            });
+    };
 
     return (
         <div className="max-w-[700px] mx-auto bg-[#f7f7f7] p-5 rounded-lg my-5">
@@ -30,7 +61,10 @@ const MovieDetails = () => {
                     <p className="mt-2">Details:{movieDetails.details}</p>
                 </div>
                 <div className="flex gap-3 mt-4">
-                    <button className="btn bg-[#e50912] text-white">
+                    <button
+                        onClick={handleAddFavorites}
+                        className="btn bg-[#e50912] text-white"
+                    >
                         Add to favorite
                     </button>
                     <button className="btn bg-[#e50912] text-white">
