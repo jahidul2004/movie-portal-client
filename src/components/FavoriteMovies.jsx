@@ -1,5 +1,5 @@
 import { useLoaderData } from "react-router-dom";
-import MovieCard from "./MovieCard";
+import FavoriteCard from "./FavoriteCard";
 
 const FavoriteMovies = () => {
     const favoritesMovies = useLoaderData();
@@ -11,7 +11,7 @@ const FavoriteMovies = () => {
             </h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-5 px-4">
                 {favoritesMovies.map((movie) => (
-                    <MovieCard key={movie._id} movie={movie}></MovieCard>
+                    <FavoriteCard key={movie._id} movie={movie}></FavoriteCard>
                 ))}
             </div>
         </div>
