@@ -5,6 +5,24 @@ import MovieCard from "./MovieCard";
 const Home = () => {
     const movies = useLoaderData();
 
+    const genres = [
+        "Action",
+        "Adventure",
+        "Comedy",
+        "Drama",
+        "Horror",
+        "Thriller",
+        "Sci-Fi",
+        "Fantasy",
+        "Animation",
+        "Romance",
+        "Mystery",
+        "Documentary",
+        "Biography",
+        "Musical",
+        "Historical",
+    ];
+
     const topRatedMovies = movies
         .sort((a, b) => b.rating - a.rating)
         .slice(0, 6);
@@ -89,6 +107,18 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <h1 className="text-3xl font-bold text-[#e50912] m-4 text-center py-6">
+                Trending Genres! <br />
+                ------------------------------
+            </h1>
+            <div className="m-5 grid grid-cols-3 md:grid-cols-6 lg:grid-cols-8 gap-4 justify-center items-center">
+                {genres.map((genre) => (
+                    <p className="text-lg border-2 border-dashed border-[#e50912] rounded-3xl w-max px-4 py-2 font-bold">
+                        {genre}
+                    </p>
+                ))}
             </div>
         </div>
     );
