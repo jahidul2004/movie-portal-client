@@ -13,6 +13,7 @@ import MovieDetails from './components/MovieDetails.jsx';
 import FavoriteMovies from './components/FavoriteMovies.jsx';
 import Trending from './components/Trending.jsx';
 import Login from './components/Login.jsx';
+import Register from './components/Register.jsx';
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>
+      },
+      {
+        path:"/register",
+        element: <Register></Register>
       }
     ]
   },
