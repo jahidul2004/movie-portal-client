@@ -1,4 +1,4 @@
-const FavoriteCard = ({ movie }) => {
+const FavoriteCard = ({ movie, handleDeleteFavorite }) => {
     return (
         <div className="shadow-xl p-5 rounded-lg">
             <div className="bg-[#f7f7f7] rounded-lg h-[280px]">
@@ -20,7 +20,12 @@ const FavoriteCard = ({ movie }) => {
                 </div>
             </div>
 
-            <button className="hover:text-black mt-3 w-max btn bg-[#e50912] text-white">
+            <button
+                onClick={() => {
+                    handleDeleteFavorite(movie._id);
+                }}
+                className="hover:text-black mt-3 w-max btn bg-[#e50912] text-white"
+            >
                 Delete Movie
             </button>
         </div>
