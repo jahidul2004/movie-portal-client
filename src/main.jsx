@@ -12,6 +12,7 @@ import AllMovies from './components/AllMovies.jsx';
 import MovieDetails from './components/MovieDetails.jsx';
 import FavoriteMovies from './components/FavoriteMovies.jsx';
 import Trending from './components/Trending.jsx';
+import Login from './components/Login.jsx';
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
         loader: async () =>{
           return await fetch("http://localhost:3000/movies")
         }
+      },
+      {
+        path: "/login",
+        element: <Login></Login>
       }
     ]
   },
