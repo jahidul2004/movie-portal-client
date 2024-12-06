@@ -1,9 +1,11 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const MovieDetails = () => {
     const movieDetails = useLoaderData();
     console.log(movieDetails);
+
+    const navigate = useNavigate();
 
     const handleAddFavorites = () => {
         fetch("http://localhost:3000/favoriteMovies", {
@@ -32,6 +34,41 @@ const MovieDetails = () => {
                     });
                 }
             });
+    };
+
+    const handleDeleteMovie = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:3000/movies/${id}`, {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        console.log(data);
+                        if (data.deletedCount === 1) {
+                            Swal.fire({
+                                title: "Success!!",
+                                text: "Movie deleted from favorites successfully",
+                                icon: "success",
+                                confirmButtonText: "Close",
+                            });
+
+                            navigate("/allMovies");
+                        }
+                    });
+            }
+        });
     };
 
     return (
@@ -67,7 +104,12 @@ const MovieDetails = () => {
                     >
                         Add to favorite
                     </button>
-                    <button className="btn bg-[#e50912] text-white">
+                    <button
+                        onClick={() => {
+                            handleDeleteMovie(movieDetails._id);
+                        }}
+                        className="btn bg-[#e50912] text-white"
+                    >
                         Delete Movie
                     </button>
                 </div>
