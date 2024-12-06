@@ -1,3 +1,4 @@
+import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 
 const Login = () => {
@@ -39,6 +40,11 @@ const Login = () => {
                         Login
                     </button>
                 </div>
+
+                <button type="button" className="btn border-[#e50912]">
+                    <FcGoogle />
+                    Login With Google
+                </button>
 
                 <p className="mt-4 text-sm">
                     New here?Please{" "}
