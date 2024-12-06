@@ -5,8 +5,8 @@ const Footer = () => {
     return (
         <footer className="footer footer-center bg-[#f7f7f7] p-10">
             <aside>
-                <RiMovie2AiLine className="text-4xl font-bold text-[#e50912]" />
-                <p className="font-bold">
+                <RiMovie2AiLine className="text-6xl font-bold text-[#e50912]" />
+                <p className="text-2xl font-bold">
                     Movie Portal
                     <br />
                     Providing best movies since 1992
