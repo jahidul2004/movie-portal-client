@@ -1,8 +1,10 @@
+import NavBar from "../components/NavBar";
 
 const MainLayout = () => {
     return (
         <div>
-            This is Main Layout
+            {/* Nav Bar */}
+            <NavBar></NavBar>
         </div>
     );
 };
