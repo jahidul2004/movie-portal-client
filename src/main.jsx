@@ -14,10 +14,12 @@ import Register from "./components/Register.jsx";
 import AuthProvider from "./provider/AuthProvider.jsx";
 import PrivateRoutes from "./routes/PrivateRoutes.jsx";
 import PrivateLoginRegister from "./routes/PrivateLoginRegister.jsx";
+import ErrorPage from "./components/ErrorPage.jsx";
 
 const router = createBrowserRouter([
     {
         path: "/",
+        errorElement: <ErrorPage></ErrorPage>,
         element: <MainLayout></MainLayout>,
         children: [
             {
