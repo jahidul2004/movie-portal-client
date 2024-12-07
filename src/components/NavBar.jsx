@@ -60,7 +60,7 @@ const NavBar = () => {
                         {links}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-2xl font-bold text-[#e50912]">
+                <a className="btn btn-ghost text-xl md:text-2xl font-bold text-[#e50912]">
                     Movie Portal
                 </a>
             </div>
