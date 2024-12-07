@@ -16,7 +16,7 @@ const Register = () => {
         const photoURL = form.photoURL.value;
         const password = form.password.value;
 
-        console.log(name, email, photoURL, password);
+        const newUser = { name, email, photoURL, password };
 
         createUser(email, password)
             .then((data) => {
@@ -30,6 +30,16 @@ const Register = () => {
                         confirmButtonText: "Close",
                     });
                     form.reset();
+
+                    fetch("http://localhost:3000/users", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(newUser),
+                    })
+                        .then((response) => response.json())
+                        .then((data) => console.log(data));
                 }
             })
             .catch((error) => {
