@@ -40,6 +40,11 @@ const Home = () => {
                     <MovieCard key={movie._id} movie={movie}></MovieCard>
                 ))}
             </div>
+            <div className="flex justify-center my-4">
+                <Link to={"/allMovies"} className="btn bg-[#e50912] text-white">
+                    Show All Movies!
+                </Link>
+            </div>
             <h1 className="text-3xl font-bold text-[#e50912] m-4 text-center py-6">
                 Upcoming Release! <br />
                 ------------------------------
