@@ -18,6 +18,20 @@ const Register = () => {
         const photoURL = form.photoURL.value;
         const password = form.password.value;
 
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
+        if (!passwordRegex.test(password)) {
+            Swal.fire({
+                title: "Error!",
+                text: "Password must contain at least 6 characters, including uppercase, lowercase letters and numbers",
+                icon: "error",
+                confirmButtonText: "Close",
+                customClass: {
+                    confirmButton: "bg-[#e50912] text-white",
+                },
+            });
+            return;
+        }
+
         const newUser = { name, email, photoURL, password };
 
         createUser(email, password)
