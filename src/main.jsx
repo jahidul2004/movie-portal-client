@@ -46,7 +46,11 @@ const router = createBrowserRouter([
             },
             {
                 path: "/movies/:id",
-                element: <MovieDetails></MovieDetails>,
+                element: (
+                    <PrivateRoutes>
+                        <MovieDetails></MovieDetails>
+                    </PrivateRoutes>
+                ),
                 loader: async ({ params }) => {
                     return await fetch(
                         `http://localhost:3000/movies/${params.id}`
