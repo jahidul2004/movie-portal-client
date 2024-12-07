@@ -102,7 +102,7 @@ const AddMovie = () => {
 
         console.log(newMovie);
 
-        fetch("http://localhost:3000/movies", {
+        fetch("https://movie-portal-server-indol.vercel.app/movies", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

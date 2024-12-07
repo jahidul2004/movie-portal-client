@@ -50,7 +50,7 @@ const Register = () => {
                     });
                     form.reset();
 
-                    fetch("http://localhost:3000/users", {
+                    fetch("https://movie-portal-server-indol.vercel.app/users", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
