@@ -95,6 +95,30 @@ const Login = () => {
                                         icon: "success",
                                         confirmButtonText: "Close",
                                     });
+
+                                    const name = result.user.displayName;
+                                    const email = result.user.email;
+                                    const photoURL = result.user.photoURL;
+                                    const password = null;
+
+                                    const newUser = {
+                                        name,
+                                        email,
+                                        photoURL,
+                                        password,
+                                    };
+
+                                    fetch("http://localhost:3000/users", {
+                                        method: "POST",
+                                        headers: {
+                                            "Content-Type": "application/json",
+                                        },
+                                        body: JSON.stringify(newUser),
+                                    })
+                                        .then((res) => res.json())
+                                        .then((data) => {
+                                            console.log(data);
+                                        });
                                 }
                             })
                             .catch((error) => {
