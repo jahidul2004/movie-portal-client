@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const NavBar = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
 
     const links = (
         <>
@@ -79,7 +80,25 @@ const NavBar = () => {
                                 alt=""
                             />
                         </div>
-                        <button className="btn bg-[#e50912] text-white">
+                        <button
+                            onClick={() => {
+                                logOut()
+                                    .then((res) => {
+                                        if (res === undefined) {
+                                            Swal.fire({
+                                                title: "Success!",
+                                                text: "Logged Out Successfully",
+                                                icon: "success",
+                                                confirmButtonText: "Close",
+                                            });
+                                        }
+                                    })
+                                    .catch((error) => {
+                                        console.log(error);
+                                    });
+                            }}
+                            className="btn bg-[#e50912] text-white"
+                        >
                             Logout
                         </button>
                     </div>
