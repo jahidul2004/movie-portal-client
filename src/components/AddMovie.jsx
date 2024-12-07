@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
-import { Rating } from "react-simple-star-rating";
+import StarRatings from "react-star-ratings";
 
 const AddMovie = () => {
     const [rating, setRating] = useState(0);
 
-    const handleRating = (rate) => {
-        setRating(rate / 20);
+    const handleRating = (newRating) => {
+        setRating(newRating);
     };
 
     const handleAddMovie = (event) => {
@@ -222,6 +222,12 @@ const AddMovie = () => {
                                 <option value="2023">2023</option>
                                 <option value="2022">2022</option>
                                 <option value="2021">2021</option>
+                                <option value="2020">2020</option>
+                                <option value="2019">2019</option>
+                                <option value="2018">2018</option>
+                                <option value="2017">2017</option>
+                                <option value="2016">2016</option>
+                                <option value="2015">2015</option>
                             </select>
                         </div>
 
@@ -230,17 +236,21 @@ const AddMovie = () => {
                                 <span className="label-text">Rating</span>
                             </label>
                             <div
+                                className="border p-2 rounded-lg border-[#00000034]"
                                 style={{
                                     display: "flex",
                                     justifyContent: "space-between",
                                 }}
                             >
-                                <Rating
-                                    onClick={handleRating}
-                                    ratingValue={rating * 20}
-                                    size={30}
-                                    fillColor="#FFD700"
-                                    emptyColor="#E0E0E0"
+                                <StarRatings
+                                    rating={rating}
+                                    starDimension="30px"
+                                    starSpacing="5px"
+                                    starRatedColor="#e50912"
+                                    starEmptyColor="#E0E0E0"
+                                    changeRating={handleRating}
+                                    numberOfStars={5}
+                                    name="rating"
                                 />
                             </div>
                         </div>

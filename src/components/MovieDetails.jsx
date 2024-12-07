@@ -1,11 +1,18 @@
 import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import StarRatings from "react-star-ratings";
 
 const MovieDetails = () => {
     const movieDetails = useLoaderData();
     console.log(movieDetails);
 
     const navigate = useNavigate();
+
+    const formatDuration = (duration) => {
+        const hours = Math.floor(duration / 60);
+        const minutes = duration % 60;
+        return `${hours}h ${minutes}m`;
+    };
 
     const handleAddFavorites = () => {
         fetch("http://localhost:3000/favoriteMovies", {
@@ -86,25 +93,38 @@ const MovieDetails = () => {
                 <img
                     className="rounded-lg"
                     src={movieDetails.posterURL}
-                    alt=""
+                    alt={movieDetails.title}
                 />
             </div>
             <div>
                 <div className="mt-4">
-                    {movieDetails.genre.map((genre) => (
-                        <span className="mt-2 font-semibold border text-[#e50912] border-[#e50912] rounded-full px-2 py-1 m-1">
+                    {movieDetails.genre.map((genre, index) => (
+                        <span
+                            key={index}
+                            className="mt-2 font-semibold border text-[#e50912] border-[#e50912] rounded-full px-2 py-1 m-1"
+                        >
                             {genre}
                         </span>
                     ))}
                 </div>
-                <h1 className="text-3xl font-bold my-3">
-                    {movieDetails.title}
-                </h1>
+                <h1 className="text-3xl font-bold my-3">{movieDetails.title}</h1>
                 <div className="font-semibold my-2">
-                    <h1>Duration:{movieDetails.duration}Hours</h1>
-                    <h1>Release Year:{movieDetails.releaseYear}</h1>
-                    <h1>Rating:{movieDetails.rating}</h1>
-                    <p className="mt-2">Details:{movieDetails.details}</p>
+                    <h1>Duration: {formatDuration(movieDetails.duration)}</h1>
+                    <h1>Release Year: {movieDetails.releaseYear}</h1>
+                    <div className="flex items-center">
+                        <h1 className="mr-2">Rating:</h1>
+                        <StarRatings
+                            rating={movieDetails.rating}
+                            starDimension="20px"
+                            starSpacing="5px"
+                            starRatedColor="#e50912"
+                            starEmptyColor="#E0E0E0"
+                            numberOfStars={5}
+                            name="rating"
+                        />
+                        <span className="ml-2">({movieDetails.rating}/5)</span>
+                    </div>
+                    <p className="mt-2">Details: {movieDetails.details}</p>
                 </div>
                 <div className="flex gap-3 mt-4">
                     <button
