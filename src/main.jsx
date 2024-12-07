@@ -13,6 +13,7 @@ import Login from "./components/Login.jsx";
 import Register from "./components/Register.jsx";
 import AuthProvider from "./provider/AuthProvider.jsx";
 import PrivateRoutes from "./routes/PrivateRoutes.jsx";
+import PrivateLoginRegister from "./routes/PrivateLoginRegister.jsx";
 
 const router = createBrowserRouter([
     {
@@ -67,11 +68,19 @@ const router = createBrowserRouter([
             },
             {
                 path: "/login",
-                element: <Login></Login>,
+                element: (
+                    <PrivateLoginRegister>
+                        <Login></Login>
+                    </PrivateLoginRegister>
+                ),
             },
             {
                 path: "/register",
-                element: <Register></Register>,
+                element: (
+                    <PrivateLoginRegister>
+                        <Register></Register>
+                    </PrivateLoginRegister>
+                ),
             },
         ],
     },
