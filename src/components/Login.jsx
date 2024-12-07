@@ -5,7 +5,7 @@ import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Login = () => {
-    const { loginUser } = useContext(AuthContext);
+    const { loginUser, loginWithGoogle } = useContext(AuthContext);
 
     const handleLogin = (event) => {
         event.preventDefault();
@@ -83,7 +83,33 @@ const Login = () => {
                     </button>
                 </div>
 
-                <button type="button" className="btn border-[#e50912]">
+                <button
+                    onClick={() => {
+                        loginWithGoogle()
+                            .then((result) => {
+                                console.log(result);
+                                if (result.user) {
+                                    Swal.fire({
+                                        title: "Success!!",
+                                        text: "User Logged in Successfully",
+                                        icon: "success",
+                                        confirmButtonText: "Close",
+                                    });
+                                }
+                            })
+                            .catch((error) => {
+                                console.log(error);
+                                Swal.fire({
+                                    title: "Error!",
+                                    text: error.message,
+                                    icon: "error",
+                                    confirmButtonText: "Close",
+                                });
+                            });
+                    }}
+                    type="button"
+                    className="btn border-[#e50912]"
+                >
                     <FcGoogle />
                     Login With Google
                 </button>
