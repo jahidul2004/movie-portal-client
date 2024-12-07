@@ -15,12 +15,11 @@ const AddMovie = () => {
 
         const posterURL = form.posterURL.value.trim();
         const title = form.title.value.trim();
-        const genre = form.genre.value.trim();
+        const genre = [form.genre.value.trim()];
         const duration = parseInt(form.duration.value.trim());
         const releaseYear = form.releaseYear.value.trim();
         const details = form.details.value.trim();
 
-        // Validations
         if (!/^https?:\/\/.+$/.test(posterURL)) {
             Swal.fire({
                 title: "Invalid URL!",
@@ -94,7 +93,7 @@ const AddMovie = () => {
         const newMovie = {
             posterURL,
             title,
-            genre: genre.split(","),
+            genre,
             duration,
             releaseYear,
             rating,
@@ -179,13 +178,18 @@ const AddMovie = () => {
                             <label className="label">
                                 <span className="label-text">Genre</span>
                             </label>
-                            <input
+                            <select
                                 name="genre"
-                                type="text"
-                                placeholder="Enter genres (comma-separated)"
-                                className="input input-bordered"
+                                className="select select-bordered"
                                 required
-                            />
+                            >
+                                <option value="">Select Genre</option>
+                                <option value="Comedy">Comedy</option>
+                                <option value="Drama">Drama</option>
+                                <option value="Horror">Horror</option>
+                                <option value="Action">Action</option>
+                                <option value="Romance">Romance</option>
+                            </select>
                         </div>
 
                         <div className="form-control">

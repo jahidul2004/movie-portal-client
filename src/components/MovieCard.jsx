@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const MovieCard = ({ movie }) => {
     return (
-        <div className="shadow-xl p-5 rounded-lg">
+        <div className="p-5 rounded-lg border-2">
             <div className="bg-[#f7f7f7] rounded-lg h-[280px]">
                 <img className="h-full rounded-lg" src={movie.posterURL} />
             </div>
