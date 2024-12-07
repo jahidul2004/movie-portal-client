@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
+import { RiMovie2AiLine } from "react-icons/ri";
 
 const NavBar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -72,6 +73,7 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <a className="btn btn-ghost text-xl md:text-2xl lg:text-3xl font-bold text-[#e50912]">
+                    <RiMovie2AiLine className="text-4xl font-bold text-[#e50912] hidden md:block" />
                     Movie Portal
                 </a>
             </div>
