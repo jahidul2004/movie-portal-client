@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Register = () => {
     const { createUser, updateUser } = useContext(AuthContext);
+
+    const navigate = useNavigate();
 
     const handleRegister = (event) => {
         event.preventDefault();
@@ -47,6 +49,8 @@ const Register = () => {
                     })
                         .then((data) => console.log(data))
                         .catch((error) => console.log(error));
+
+                    navigate('/')
                 }
             })
             .catch((error) => {

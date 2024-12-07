@@ -12,6 +12,7 @@ import Trending from "./components/Trending.jsx";
 import Login from "./components/Login.jsx";
 import Register from "./components/Register.jsx";
 import AuthProvider from "./provider/AuthProvider.jsx";
+import PrivateRoutes from "./routes/PrivateRoutes.jsx";
 
 const router = createBrowserRouter([
     {
@@ -20,7 +21,11 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/addMovie",
-                element: <AddMovie></AddMovie>,
+                element: (
+                    <PrivateRoutes>
+                        <AddMovie></AddMovie>
+                    </PrivateRoutes>
+                ),
             },
             {
                 path: "/",
@@ -47,7 +52,11 @@ const router = createBrowserRouter([
             },
             {
                 path: "/favoriteMovies",
-                element: <FavoriteMovies></FavoriteMovies>,
+                element: (
+                    <PrivateRoutes>
+                        <FavoriteMovies></FavoriteMovies>
+                    </PrivateRoutes>
+                ),
                 loader: async () => {
                     return await fetch("http://localhost:3000/favoriteMovies");
                 },
@@ -55,9 +64,6 @@ const router = createBrowserRouter([
             {
                 path: "/trendingNow",
                 element: <Trending></Trending>,
-                loader: async () => {
-                    return await fetch("http://localhost:3000/movies");
-                },
             },
             {
                 path: "/login",

@@ -14,18 +14,29 @@ const NavBar = () => {
             <li>
                 <NavLink to={"/allMovies"}>All Movies</NavLink>
             </li>
-            <li>
-                <NavLink to={"/addMovie"}>Add Movies</NavLink>
-            </li>
-            <li>
-                <NavLink to={"/favoriteMovies"}>My Favorites</NavLink>
-            </li>
+            {user && (
+                <>
+                    <li>
+                        <NavLink to={"/addMovie"}>Add Movies</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to={"/favoriteMovies"}>My Favorites</NavLink>
+                    </li>
+                </>
+            )}
             <li>
                 <NavLink to={"/trendingNow"}>Trending Now</NavLink>
             </li>
-            <li>
-                <NavLink to={"/register"}>Register</NavLink>
-            </li>
+            {!user && (
+                <>
+                    <li>
+                        <NavLink to={"/register"}>Register</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to={"/login"}>Login</NavLink>
+                    </li>
+                </>
+            )}
         </>
     );
 
@@ -60,7 +71,7 @@ const NavBar = () => {
                         {links}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl md:text-2xl font-bold text-[#e50912]">
+                <a className="btn btn-ghost text-xl md:text-2xl lg:text-3xl font-bold text-[#e50912]">
                     Movie Portal
                 </a>
             </div>

@@ -1,8 +1,7 @@
 import React from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Trending = () => {
-    const movies = useLoaderData();
     return (
         <div>
             <div

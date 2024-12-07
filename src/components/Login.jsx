@@ -1,10 +1,12 @@
 import { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Login = () => {
+    const navigate = useNavigate();
+
     const { loginUser, loginWithGoogle } = useContext(AuthContext);
 
     const handleLogin = (event) => {
@@ -27,7 +29,6 @@ const Login = () => {
                         icon: "success",
                         confirmButtonText: "Close",
                     });
-                    form.reset();
                 }
             })
             .catch((error) => {
@@ -118,6 +119,7 @@ const Login = () => {
                                         .then((res) => res.json())
                                         .then((data) => {
                                             console.log(data);
+                                            navigate("/");
                                         });
                                 }
                             })
