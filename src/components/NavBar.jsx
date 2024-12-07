@@ -1,15 +1,32 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvider";
 
 const NavBar = () => {
+    const { user } = useContext(AuthContext);
 
-    const links = <>
-        <li><NavLink to={'/'}>Home</NavLink></li>
-        <li><NavLink to={'/allMovies'}>All Movies</NavLink></li>
-        <li><NavLink to={'/addMovie'}>Add Movies</NavLink></li>
-        <li><NavLink to={'/favoriteMovies'}>My Favorites</NavLink></li>
-        <li><NavLink to={'/trendingNow'}>Trending Now</NavLink></li>
-        <li><NavLink to={'/register'}>Register</NavLink></li>
-    </>
+    const links = (
+        <>
+            <li>
+                <NavLink to={"/"}>Home</NavLink>
+            </li>
+            <li>
+                <NavLink to={"/allMovies"}>All Movies</NavLink>
+            </li>
+            <li>
+                <NavLink to={"/addMovie"}>Add Movies</NavLink>
+            </li>
+            <li>
+                <NavLink to={"/favoriteMovies"}>My Favorites</NavLink>
+            </li>
+            <li>
+                <NavLink to={"/trendingNow"}>Trending Now</NavLink>
+            </li>
+            <li>
+                <NavLink to={"/register"}>Register</NavLink>
+            </li>
+        </>
+    );
 
     return (
         <div className="navbar bg-base-100 px-4">
@@ -42,15 +59,35 @@ const NavBar = () => {
                         {links}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-2xl font-bold text-[#e50912]">Movie Portal</a>
+                <a className="btn btn-ghost text-2xl font-bold text-[#e50912]">
+                    Movie Portal
+                </a>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
-                    {links}
-                </ul>
+                <ul className="menu menu-horizontal px-1">{links}</ul>
             </div>
             <div className="navbar-end">
-                <Link to={'/login'} className="btn bg-[#e50912] text-white">Login</Link>
+                {user ? (
+                    <div className="flex gap-2">
+                        <div
+                            className="border-2 border-[#e50912] rounded-full p-1"
+                            title={user.displayName}
+                        >
+                            <img
+                                className="h-[40px] w-[40px] rounded-full"
+                                src={user.photoURL}
+                                alt=""
+                            />
+                        </div>
+                        <button className="btn bg-[#e50912] text-white">
+                            Logout
+                        </button>
+                    </div>
+                ) : (
+                    <Link to={"/login"} className="btn bg-[#e50912] text-white">
+                        Login
+                    </Link>
+                )}
             </div>
         </div>
     );
