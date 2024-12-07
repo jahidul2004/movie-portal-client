@@ -118,6 +118,9 @@ const AddMovie = () => {
                         text: "Movie added successfully.",
                         icon: "success",
                         confirmButtonText: "Close",
+                        customClass: {
+                            confirmButton: "bg-[#e50912] text-white",
+                        },
                     });
                     form.reset();
                     setRating(0);
@@ -127,6 +130,9 @@ const AddMovie = () => {
                         text: "Sorry, something went wrong.",
                         icon: "error",
                         confirmButtonText: "Close",
+                        customClass: {
+                            confirmButton: "bg-[#e50912] text-white",
+                        },
                     });
                 }
             });

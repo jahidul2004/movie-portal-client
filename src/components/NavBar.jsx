@@ -93,20 +93,37 @@ const NavBar = () => {
                         </div>
                         <button
                             onClick={() => {
-                                logOut()
-                                    .then((res) => {
-                                        if (res === undefined) {
-                                            Swal.fire({
-                                                title: "Success!",
-                                                text: "Logged Out Successfully",
-                                                icon: "success",
-                                                confirmButtonText: "Close",
+                                Swal.fire({
+                                    title: "Are you sure?",
+                                    text: "You won't be able to revert this!",
+                                    icon: "warning",
+                                    showCancelButton: true,
+                                    confirmButtonColor: "#e50912",
+                                    cancelButtonColor: "#3085d6",
+                                    confirmButtonText: "Yes, Loge me out!",
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        logOut()
+                                            .then((res) => {
+                                                if (res === undefined) {
+                                                    Swal.fire({
+                                                        title: "Success!",
+                                                        text: "Logged Out Successfully",
+                                                        icon: "success",
+                                                        confirmButtonText:
+                                                            "Close",
+                                                        customClass: {
+                                                            confirmButton:
+                                                                "bg-[#e50912] text-white",
+                                                        },
+                                                    });
+                                                }
+                                            })
+                                            .catch((error) => {
+                                                console.log(error);
                                             });
-                                        }
-                                    })
-                                    .catch((error) => {
-                                        console.log(error);
-                                    });
+                                    }
+                                });
                             }}
                             className="btn bg-[#e50912] text-white"
                         >

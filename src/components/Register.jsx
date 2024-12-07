@@ -30,6 +30,9 @@ const Register = () => {
                         text: "User Registered Successfully",
                         icon: "success",
                         confirmButtonText: "Close",
+                        customClass: {
+                            confirmButton: "bg-[#e50912] text-white",
+                        },
                     });
                     form.reset();
 
@@ -50,7 +53,7 @@ const Register = () => {
                         .then((data) => console.log(data))
                         .catch((error) => console.log(error));
 
-                    navigate('/')
+                    navigate("/");
                 }
             })
             .catch((error) => {
@@ -60,6 +63,9 @@ const Register = () => {
                     text: error.message,
                     icon: "error",
                     confirmButtonText: "Close",
+                    customClass: {
+                        confirmButton: "bg-[#e50912] text-white",
+                    },
                 });
                 form.reset();
             });

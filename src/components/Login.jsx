@@ -28,6 +28,9 @@ const Login = () => {
                         text: "User Logged in Successfully",
                         icon: "success",
                         confirmButtonText: "Close",
+                        customClass: {
+                            confirmButton: "bg-[#e50912] text-white",
+                        },
                     });
                 }
             })
@@ -38,6 +41,9 @@ const Login = () => {
                     text: error.message,
                     icon: "error",
                     confirmButtonText: "Close",
+                    customClass: {
+                        confirmButton: "bg-[#e50912] text-white",
+                    },
                 });
                 form.reset();
             });
@@ -95,6 +101,10 @@ const Login = () => {
                                         text: "User Logged in Successfully",
                                         icon: "success",
                                         confirmButtonText: "Close",
+                                        customClass: {
+                                            confirmButton:
+                                                "bg-[#e50912] text-white",
+                                        },
                                     });
 
                                     const name = result.user.displayName;
@@ -130,6 +140,10 @@ const Login = () => {
                                     text: error.message,
                                     icon: "error",
                                     confirmButtonText: "Close",
+                                    customClass: {
+                                        confirmButton:
+                                            "bg-[#e50912] text-white",
+                                    },
                                 });
                             });
                     }}

@@ -39,6 +39,9 @@ const FavoriteMovies = () => {
                                 text: "Movie deleted from favorites successfully",
                                 icon: "success",
                                 confirmButtonText: "Close",
+                                customClass: {
+                                    confirmButton: "bg-[#e50912] text-white",
+                                },
                             });
                         }
                     });

@@ -24,6 +24,9 @@ const MovieDetails = () => {
                         text: "Movie added to favorites",
                         icon: "success",
                         confirmButtonText: "Close",
+                        customClass: {
+                            confirmButton: "bg-[#e50912] text-white",
+                        },
                     });
                 } else {
                     Swal.fire({
@@ -31,6 +34,9 @@ const MovieDetails = () => {
                         text: data.message,
                         icon: "error",
                         confirmButtonText: "Close",
+                        customClass: {
+                            confirmButton: "bg-[#e50912] text-white",
+                        },
                     });
                 }
             });
@@ -42,8 +48,8 @@ const MovieDetails = () => {
             text: "You won't be able to revert this!",
             icon: "warning",
             showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
+            confirmButtonColor: "#e50912",
+            cancelButtonColor: "#3085d6",
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
@@ -62,6 +68,9 @@ const MovieDetails = () => {
                                 text: "Movie deleted from favorites successfully",
                                 icon: "success",
                                 confirmButtonText: "Close",
+                                customClass: {
+                                    confirmButton: "bg-[#e50912] text-white",
+                                },
                             });
 
                             navigate("/allMovies");
