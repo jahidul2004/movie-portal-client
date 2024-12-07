@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
-import StarRatings from "react-star-ratings"; // Import react-star-ratings
+import StarRatings from "react-star-ratings";
 
 const MovieCard = ({ movie }) => {
-    // Convert duration to hours and minutes
     const formatDuration = (minutes) => {
         const hours = Math.floor(minutes / 60);
         const mins = minutes % 60;
@@ -36,10 +35,10 @@ const MovieCard = ({ movie }) => {
                     <div className="flex items-center">
                         <h1 className="mr-2">Rating:</h1>
                         <StarRatings
-                            rating={movie.rating} // Directly pass rating value
+                            rating={movie.rating}
                             starDimension="20px"
                             starSpacing="5px"
-                            starRatedColor="#FFD700"
+                            starRatedColor="#e50912"
                             starEmptyColor="#E0E0E0"
                             numberOfStars={5}
                             name="rating"
