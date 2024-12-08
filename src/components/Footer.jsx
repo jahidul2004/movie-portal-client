@@ -3,7 +3,7 @@ import { RiMovie2AiLine } from "react-icons/ri";
 
 const Footer = () => {
     return (
-        <footer className="footer footer-center bg-[#f7f7f7] p-10">
+        <footer className="footer footer-center p-10">
             <aside>
                 <RiMovie2AiLine className="text-6xl font-bold text-[#e50912]" />
                 <p className="text-xl font-bold">

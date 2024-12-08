@@ -98,7 +98,7 @@ const MovieDetails = () => {
         <div className="max-w-[700px] mx-auto bg-[#f7f7f7] p-5 rounded-lg my-5">
             <div className="h-[350px]">
                 <img
-                    className="rounded-lg h-full"
+                    className="rounded-lg h-full w-full"
                     src={movieDetails.posterURL}
                     alt={movieDetails.title}
                 />
@@ -135,7 +135,7 @@ const MovieDetails = () => {
                     </div>
                     <p className="mt-2">Details: {movieDetails.details}</p>
                 </div>
-                <div className="flex gap-3 mt-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-4">
                     <button
                         onClick={handleAddFavorites}
                         className="btn bg-[#e50912] text-white"

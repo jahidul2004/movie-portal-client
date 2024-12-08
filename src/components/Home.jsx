@@ -103,7 +103,7 @@ const Home = () => {
                     <div className="hero-content text-neutral-content text-center">
                         <div className="max-w-xl text-[#e50912] border-4 border-dashed p-5">
                             <p className="font-bold">01.05.2025</p>
-                            <h1 className="text-6xl font-bold text-center">
+                            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-center">
                                 Rajkumar!
                             </h1>
                             <p className="text-lg font-bold">
@@ -118,7 +118,7 @@ const Home = () => {
                 Trending Genres! <br />
                 ------------------------------
             </h1>
-            <div className="m-5 grid grid-cols-3 md:grid-cols-6 lg:grid-cols-8 gap-4 justify-center items-center">
+            <div className="m-5 grid grid-cols-2 md:grid-cols-6 lg:grid-cols-8 gap-4 justify-center items-center">
                 {genres.map((genre) => (
                     <p className="text-lg border-2 border-dashed border-[#e50912] rounded-3xl w-max px-4 py-2 font-bold">
                         {genre}

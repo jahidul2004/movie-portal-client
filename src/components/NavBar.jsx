@@ -1,11 +1,27 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
 import { RiMovie2AiLine } from "react-icons/ri";
+import { CiLight } from "react-icons/ci";
+import { FaRegMoon } from "react-icons/fa";
 
 const NavBar = () => {
     const { user, logOut } = useContext(AuthContext);
+
+    const htmlElement = document.documentElement;
+
+    const [theme, setTheme] = useState(htmlElement.getAttribute("data-theme"));
+
+    const toggleTheme = () => {
+        if (theme === "light") {
+            htmlElement.setAttribute("data-theme", "dark");
+            setTheme("dark");
+        } else {
+            htmlElement.setAttribute("data-theme", "light");
+            setTheme("light");
+        }
+    };
 
     const links = (
         <>
@@ -42,8 +58,8 @@ const NavBar = () => {
     );
 
     return (
-        <div className="navbar bg-base-100 px-4">
-            <div className="navbar-start">
+        <div className="navbar flex justify-between bg-base-100 px-4">
+            <div className="md:navbar-start">
                 <div className="dropdown">
                     <div
                         tabIndex={0}
@@ -73,16 +89,31 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <a className="btn btn-ghost text-xl md:text-2xl lg:text-3xl font-bold text-[#e50912]">
-                    <RiMovie2AiLine className="text-4xl font-bold text-[#e50912] hidden md:block" />
-                    Movie Portal
+                    <RiMovie2AiLine className="text-4xl font-bold text-[#e50912]" />
+                    <p className="hidden md:block">Movie Portal</p>
                 </a>
             </div>
-            <div className="navbar-center hidden lg:flex">
+
+            <div className="md:navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">{links}</ul>
             </div>
-            <div className="navbar-end">
+
+            <div className="md:navbar-end">
                 {user ? (
                     <div className="flex gap-2">
+                        <button
+                            onClick={toggleTheme}
+                            className="btn w-max text-2xl font-extrabold border-none text-[#e50912]"
+                        >
+                            {theme === "dark" ? (
+                                <CiLight
+                                    title="Switch to Light Mode"
+                                    className="text-white"
+                                />
+                            ) : (
+                                <FaRegMoon title="Switch to dark mode" />
+                            )}
+                        </button>
                         <div
                             className="border-2 border-[#e50912] rounded-full p-1"
                             title={user.displayName}
