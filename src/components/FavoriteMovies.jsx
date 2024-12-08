@@ -44,7 +44,7 @@ const FavoriteMovies = () => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/favoriteMovies/${id}`, {
+                fetch(`https://movie-portal-server-indol.vercel.app/favoriteMovies/${id}`, {
                     method: "DELETE",
                     headers: {
                         "Content-Type": "application/json",

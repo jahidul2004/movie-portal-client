@@ -18,7 +18,8 @@ const Register = () => {
         const photoURL = form.photoURL.value;
         const password = form.password.value;
 
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
+        const passwordRegex =
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{6,}$/;
         if (!passwordRegex.test(password)) {
             Swal.fire({
                 title: "Error!",
@@ -50,13 +51,16 @@ const Register = () => {
                     });
                     form.reset();
 
-                    fetch("http://localhost:3000/users", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify(newUser),
-                    })
+                    fetch(
+                        "https://movie-portal-server-indol.vercel.app/users",
+                        {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify(newUser),
+                        }
+                    )
                         .then((response) => response.json())
                         .then((data) => console.log(data));
 

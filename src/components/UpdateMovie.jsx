@@ -38,7 +38,7 @@ const UpdateMovie = () => {
 
         console.log("Updated Movie Data:", data);
 
-        fetch(`http://localhost:3000/movies/${movie._id}`, {
+        fetch(`https://movie-portal-server-indol.vercel.app/movies/${movie._id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

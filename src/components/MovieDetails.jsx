@@ -22,7 +22,7 @@ const MovieDetails = () => {
     movieDetails.userEmail = userEmail;
 
     const handleAddFavorites = () => {
-        fetch("http://localhost:3000/favoriteMovies", {
+        fetch("https://movie-portal-server-indol.vercel.app/favoriteMovies", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -70,7 +70,7 @@ const MovieDetails = () => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/movies/${id}`, {
+                fetch(`https://movie-portal-server-indol.vercel.app/movies/${id}`, {
                     method: "DELETE",
                     headers: {
                         "Content-Type": "application/json",
