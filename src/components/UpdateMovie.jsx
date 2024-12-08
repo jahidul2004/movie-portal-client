@@ -36,8 +36,6 @@ const UpdateMovie = () => {
         data.genre = [data.genre];
         data.rating = rating;
 
-        console.log("Updated Movie Data:", data);
-
         fetch(`https://movie-portal-server-indol.vercel.app/movies/${movie._id}`, {
             method: "PUT",
             headers: {
@@ -47,7 +45,6 @@ const UpdateMovie = () => {
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log("Server Response:", data);
                 if (data.modifiedCount === 1) {
                     Swal.fire({
                         title: "Success!!",

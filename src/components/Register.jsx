@@ -37,7 +37,6 @@ const Register = () => {
 
         createUser(email, password)
             .then((data) => {
-                console.log(data);
 
                 if (data.user) {
                     Swal.fire({

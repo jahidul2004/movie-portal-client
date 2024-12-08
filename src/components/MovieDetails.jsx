@@ -6,7 +6,6 @@ import { AuthContext } from "../provider/AuthProvider";
 
 const MovieDetails = () => {
     const movieDetails = useLoaderData();
-    console.log(movieDetails);
 
     const navigate = useNavigate();
 
@@ -31,7 +30,6 @@ const MovieDetails = () => {
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 if (
                     data.acknowledged ||
                     data.message === "Movie added to favorites successfully."
@@ -78,7 +76,6 @@ const MovieDetails = () => {
                 })
                     .then((response) => response.json())
                     .then((data) => {
-                        console.log(data);
                         if (data.deletedCount === 1) {
                             Swal.fire({
                                 title: "Success!!",

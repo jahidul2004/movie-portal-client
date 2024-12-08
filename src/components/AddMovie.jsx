@@ -100,8 +100,6 @@ const AddMovie = () => {
             details,
         };
 
-        console.log(newMovie);
-
         fetch("https://movie-portal-server-indol.vercel.app/movies", {
             method: "POST",
             headers: {

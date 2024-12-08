@@ -17,11 +17,8 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
 
-        console.log(email, password);
-
         loginUser(email, password)
             .then((result) => {
-                console.log(result);
                 if (result.user) {
                     Swal.fire({
                         title: "Success!!",
@@ -94,7 +91,6 @@ const Login = () => {
                     onClick={() => {
                         loginWithGoogle()
                             .then((result) => {
-                                console.log(result);
                                 if (result.user) {
                                     Swal.fire({
                                         title: "Success!!",
@@ -128,7 +124,6 @@ const Login = () => {
                                     })
                                         .then((res) => res.json())
                                         .then((data) => {
-                                            console.log(data);
                                             navigate("/");
                                         });
                                 }
