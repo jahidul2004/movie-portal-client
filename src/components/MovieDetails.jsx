@@ -99,9 +99,9 @@ const MovieDetails = () => {
 
     return (
         <div className="max-w-[700px] mx-auto bg-[#f7f7f7] p-5 rounded-lg my-5">
-            <div>
+            <div className="h-[350px]">
                 <img
-                    className="rounded-lg"
+                    className="rounded-lg h-full"
                     src={movieDetails.posterURL}
                     alt={movieDetails.title}
                 />
@@ -153,7 +153,10 @@ const MovieDetails = () => {
                     >
                         Delete Movie
                     </button>
-                    <Link to={`/update/${movieDetails._id}`} className="btn bg-[#e50912] text-white">
+                    <Link
+                        to={`/update/${movieDetails._id}`}
+                        className="btn bg-[#e50912] text-white"
+                    >
                         Update Movie
                     </Link>
                 </div>
