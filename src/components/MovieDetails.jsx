@@ -1,6 +1,8 @@
 import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import StarRatings from "react-star-ratings";
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
 
 const MovieDetails = () => {
     const movieDetails = useLoaderData();
@@ -14,8 +16,13 @@ const MovieDetails = () => {
         return `${hours}h ${minutes}m`;
     };
 
+    const { user } = useContext(AuthContext);
+
+    const userEmail = user ? user.email : null;
+    movieDetails.userEmail = userEmail;
+
     const handleAddFavorites = () => {
-        fetch("https://movie-portal-server-indol.vercel.app/favoriteMovies", {
+        fetch("http://localhost:3000/favoriteMovies", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -25,7 +32,7 @@ const MovieDetails = () => {
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
-                if (data.acknowledged) {
+                if (data.acknowledged || data.message === "Movie added to favorites successfully.") {
                     Swal.fire({
                         title: "Success!!",
                         text: "Movie added to favorites",
@@ -60,12 +67,15 @@ const MovieDetails = () => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://movie-portal-server-indol.vercel.app/movies/${id}`, {
-                    method: "DELETE",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                })
+                fetch(
+                    `http://localhost:3000/movies/${id}`,
+                    {
+                        method: "DELETE",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    }
+                )
                     .then((response) => response.json())
                     .then((data) => {
                         console.log(data);
@@ -107,7 +117,9 @@ const MovieDetails = () => {
                         </span>
                     ))}
                 </div>
-                <h1 className="text-3xl font-bold my-3">{movieDetails.title}</h1>
+                <h1 className="text-3xl font-bold my-3">
+                    {movieDetails.title}
+                </h1>
                 <div className="font-semibold my-2">
                     <h1>Duration: {formatDuration(movieDetails.duration)}</h1>
                     <h1>Release Year: {movieDetails.releaseYear}</h1>

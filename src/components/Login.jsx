@@ -119,7 +119,7 @@ const Login = () => {
                                         password,
                                     };
 
-                                    fetch("https://movie-portal-server-indol.vercel.app/users", {
+                                    fetch("http://localhost:3000/users", {
                                         method: "POST",
                                         headers: {
                                             "Content-Type": "application/json",

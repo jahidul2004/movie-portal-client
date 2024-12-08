@@ -1,13 +1,38 @@
 import { useLoaderData } from "react-router-dom";
 import FavoriteCard from "./FavoriteCard";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../provider/AuthProvider";
 
 const FavoriteMovies = () => {
-    const favoritesMovies = useLoaderData();
+    const allFavoriteMovies = useLoaderData(); // Load all favorite movies
+    const { user } = useContext(AuthContext);
 
-    const [movies, setMovies] = useState(favoritesMovies);
+    const [movies, setMovies] = useState([]);
 
+    useEffect(() => {
+        if (user) {
+            // Filter by logged-in user's email
+            const filteredMoviesByEmail = allFavoriteMovies.filter(
+                (movie) => movie.userEmail === user.email
+            );
+
+            // Remove duplicates based on title
+            const uniqueMovies = [];
+            const titleSet = new Set();
+
+            filteredMoviesByEmail.forEach((movie) => {
+                if (!titleSet.has(movie.title)) {
+                    titleSet.add(movie.title);
+                    uniqueMovies.push(movie);
+                }
+            });
+
+            setMovies(uniqueMovies);
+        }
+    }, [user, allFavoriteMovies]);
+
+    // Handle delete favorite movie
     const handleDeleteFavorite = (id) => {
         Swal.fire({
             title: "Are you sure?",
@@ -19,7 +44,7 @@ const FavoriteMovies = () => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://movie-portal-server-indol.vercel.app/favoriteMovies/${id}`, {
+                fetch(`http://localhost:3000/favoriteMovies/${id}`, {
                     method: "DELETE",
                     headers: {
                         "Content-Type": "application/json",
@@ -27,7 +52,6 @@ const FavoriteMovies = () => {
                 })
                     .then((response) => response.json())
                     .then((data) => {
-                        console.log(data);
                         if (data.deletedCount === 1) {
                             const newMovies = movies.filter(
                                 (movie) => movie._id !== id
@@ -35,8 +59,8 @@ const FavoriteMovies = () => {
                             setMovies(newMovies);
 
                             Swal.fire({
-                                title: "Success!!",
-                                text: "Movie deleted from favorites successfully",
+                                title: "Deleted!",
+                                text: "Movie has been removed from favorites.",
                                 icon: "success",
                                 confirmButtonText: "Close",
                                 customClass: {
@@ -44,6 +68,18 @@ const FavoriteMovies = () => {
                                 },
                             });
                         }
+                    })
+                    .catch((error) => {
+                        console.error("Error deleting movie:", error);
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Could not delete the movie. Please try again.",
+                            icon: "error",
+                            confirmButtonText: "Close",
+                            customClass: {
+                                confirmButton: "bg-[#e50912] text-white",
+                            },
+                        });
                     });
             }
         });

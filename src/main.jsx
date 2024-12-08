@@ -34,18 +34,14 @@ const router = createBrowserRouter([
                 path: "/",
                 element: <Home></Home>,
                 loader: async () => {
-                    return await fetch(
-                        "https://movie-portal-server-indol.vercel.app/movies"
-                    );
+                    return await fetch("http://localhost:3000/movies");
                 },
             },
             {
                 path: "/allMovies",
                 element: <AllMovies></AllMovies>,
                 loader: async () => {
-                    return await fetch(
-                        "https://movie-portal-server-indol.vercel.app/movies"
-                    );
+                    return await fetch("http://localhost:3000/movies");
                 },
             },
             {
@@ -57,7 +53,7 @@ const router = createBrowserRouter([
                 ),
                 loader: async ({ params }) => {
                     return await fetch(
-                        `https://movie-portal-server-indol.vercel.app/movies/${params.id}`
+                        `http://localhost:3000/movies/${params.id}`
                     );
                 },
             },
@@ -69,9 +65,7 @@ const router = createBrowserRouter([
                     </PrivateRoutes>
                 ),
                 loader: async () => {
-                    return await fetch(
-                        "https://movie-portal-server-indol.vercel.app/favoriteMovies"
-                    );
+                    return await fetch("http://localhost:3000/favoriteMovies");
                 },
             },
             {
