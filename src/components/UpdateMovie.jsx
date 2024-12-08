@@ -86,6 +86,11 @@ const UpdateMovie = () => {
                             <input
                                 {...register("posterURL", {
                                     required: "Poster URL is required",
+                                    pattern: {
+                                        value: /^(http|https):\/\/[^ "]+$/,
+                                        message:
+                                            "Invalid URL format (must start with http:// or https://)",
+                                    },
                                 })}
                                 type="text"
                                 placeholder="Enter Poster URL"
@@ -106,6 +111,16 @@ const UpdateMovie = () => {
                             <input
                                 {...register("title", {
                                     required: "Title is required",
+                                    pattern: {
+                                        value: /[a-zA-Z\s]+.{2}$/,
+                                        message:
+                                            "Title must have at least the last two characters",
+                                    },
+                                    maxLength: {
+                                        value: 100,
+                                        message:
+                                            "Title cannot exceed 100 characters",
+                                    },
                                 })}
                                 type="text"
                                 placeholder="Enter Movie Title"
@@ -158,6 +173,11 @@ const UpdateMovie = () => {
                                         message:
                                             "Minimum duration is 60 minutes",
                                     },
+                                    max: {
+                                        value: 300,
+                                        message:
+                                            "Maximum duration is 300 minutes",
+                                    },
                                 })}
                                 type="number"
                                 placeholder="Enter duration"
@@ -182,16 +202,14 @@ const UpdateMovie = () => {
                                 className="select select-bordered"
                             >
                                 <option value="">Select Year</option>
-                                <option value="2024">2024</option>
-                                <option value="2023">2023</option>
-                                <option value="2022">2022</option>
-                                <option value="2021">2021</option>
-                                <option value="2020">2020</option>
-                                <option value="2019">2019</option>
-                                <option value="2018">2018</option>
-                                <option value="2017">2017</option>
-                                <option value="2016">2016</option>
-                                <option value="2015">2015</option>
+                                {[
+                                    2024, 2023, 2022, 2021, 2020, 2019, 2018,
+                                    2017, 2016, 2015,
+                                ].map((year) => (
+                                    <option key={year} value={year}>
+                                        {year}
+                                    </option>
+                                ))}
                             </select>
                             {errors.releaseYear && (
                                 <span className="text-red-500">
