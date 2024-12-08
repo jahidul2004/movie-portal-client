@@ -1,4 +1,4 @@
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import StarRatings from "react-star-ratings";
 import { useContext } from "react";
@@ -32,7 +32,10 @@ const MovieDetails = () => {
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
-                if (data.acknowledged || data.message === "Movie added to favorites successfully.") {
+                if (
+                    data.acknowledged ||
+                    data.message === "Movie added to favorites successfully."
+                ) {
                     Swal.fire({
                         title: "Success!!",
                         text: "Movie added to favorites",
@@ -67,15 +70,12 @@ const MovieDetails = () => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(
-                    `http://localhost:3000/movies/${id}`,
-                    {
-                        method: "DELETE",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                    }
-                )
+                fetch(`http://localhost:3000/movies/${id}`, {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                })
                     .then((response) => response.json())
                     .then((data) => {
                         console.log(data);
@@ -153,6 +153,9 @@ const MovieDetails = () => {
                     >
                         Delete Movie
                     </button>
+                    <Link to={`/update/${movieDetails._id}`} className="btn bg-[#e50912] text-white">
+                        Update Movie
+                    </Link>
                 </div>
             </div>
         </div>

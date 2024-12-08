@@ -15,6 +15,7 @@ import AuthProvider from "./provider/AuthProvider.jsx";
 import PrivateRoutes from "./routes/PrivateRoutes.jsx";
 import PrivateLoginRegister from "./routes/PrivateLoginRegister.jsx";
 import ErrorPage from "./components/ErrorPage.jsx";
+import UpdateMovie from "./components/UpdateMovie.jsx";
 
 const router = createBrowserRouter([
     {
@@ -87,6 +88,19 @@ const router = createBrowserRouter([
                         <Register></Register>
                     </PrivateLoginRegister>
                 ),
+            },
+            {
+                path: "/update/:id",
+                element: (
+                    <PrivateRoutes>
+                        <UpdateMovie></UpdateMovie>
+                    </PrivateRoutes>
+                ),
+                loader: async ({ params }) => {
+                    return await fetch(
+                        `http://localhost:3000/movies/${params.id}`
+                    );
+                },
             },
         ],
     },
