@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import StarRatings from "react-star-ratings";
 import Swal from "sweetalert2";
@@ -6,6 +6,7 @@ import { useState } from "react";
 
 const UpdateMovie = () => {
     const movie = useLoaderData();
+    const navigate = useNavigate();
 
     const [rating, setRating] = useState(movie.rating || 0);
 
@@ -57,6 +58,7 @@ const UpdateMovie = () => {
                             confirmButton: "bg-[#e50912] text-white",
                         },
                     });
+                    navigate(`/movies/${movie._id}`);
                 } else {
                     Swal.fire({
                         title: "Error!",
