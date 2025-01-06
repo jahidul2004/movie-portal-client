@@ -125,14 +125,23 @@ const Slider = () => {
             </div> */}
 
             <Carousel>
-                <div className="h-[550px] w-full">
-                    <img className="h-full w-full" src="https://i.ibb.co.com/ZXYLB70/05ed3663-71ba-4e60-ae36-13f279867f55.jpg" />
+                <div className="h-[350px] md:h-[450px] lg:h-[550px] w-full">
+                    <img
+                        className="h-full w-full object-cover"
+                        src="https://i.ibb.co.com/ZXYLB70/05ed3663-71ba-4e60-ae36-13f279867f55.jpg"
+                    />
                 </div>
-                <div className="h-[550px] w-full">
-                    <img className="h-full w-full" src="https://i.ibb.co.com/sjyHtmc/0a9ddc30-5d75-4959-82a9-48b88b2303df-1.jpg" />
+                <div className="h-[350px] md:h-[450px] lg:h-[550px] w-full">
+                    <img
+                        className="h-full w-full object-cover"
+                        src="https://i.ibb.co.com/sjyHtmc/0a9ddc30-5d75-4959-82a9-48b88b2303df-1.jpg"
+                    />
                 </div>
-                <div className="h-[550px] w-full">
-                    <img className="h-full w-full" src="https://i.ibb.co.com/QkK12XS/thumbnails-7454bcba7bb17c330d9a239a9c49a3dd-goplay-baaji.webp" />
+                <div className="h-[350px] md:h-[450px] lg:h-[550px] w-full">
+                    <img
+                        className="h-full w-full object-cover"
+                        src="https://i.ibb.co.com/QkK12XS/thumbnails-7454bcba7bb17c330d9a239a9c49a3dd-goplay-baaji.webp"
+                    />
                 </div>
             </Carousel>
         </div>
