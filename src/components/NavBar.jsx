@@ -58,7 +58,7 @@ const NavBar = () => {
     );
 
     return (
-        <div className="navbar flex justify-between bg-base-100 px-4">
+        <div className="sticky top-0 z-10 shadow-md navbar flex justify-between bg-base-100 px-4">
             <div className="md:navbar-start">
                 <div className="dropdown">
                     <div

@@ -1,9 +1,12 @@
+import { Carousel } from "react-responsive-carousel";
 import { Link } from "react-router-dom";
+import React, { Component } from "react";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 
 const Slider = () => {
     return (
         <div>
-            <div className="carousel w-full">
+            {/* <div className="carousel w-full">
                 <div
                     id="slide1"
                     className="h-[400px] carousel-item relative w-full"
@@ -23,7 +26,7 @@ const Slider = () => {
                         </a>
                     </div>
 
-                    <div className="border-2 border-[#e50912] w-full flex justify-center items-center">
+                    <div className="w-full flex justify-center items-center">
                         <div className="text-center">
                             <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#e50912]">
                                 Unlimited movies, TV shows, <br /> and more
@@ -61,7 +64,7 @@ const Slider = () => {
                             ❯
                         </a>
                     </div>
-                    <div className="border-2 border-[#e50912] w-full flex justify-center items-center">
+                    <div className="w-full flex justify-center items-center">
                         <div className="text-center">
                             <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#e50912]">
                                 Dive into the World of <br /> Movies and Shows
@@ -99,7 +102,7 @@ const Slider = () => {
                         </a>
                     </div>
 
-                    <div className="border-2 border-[#e50912] w-full flex justify-center items-center">
+                    <div className="w-full flex justify-center items-center">
                         <div className="text-center">
                             <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#e50912]">
                                 Unlimited Entertainment at <br /> Your
@@ -119,7 +122,19 @@ const Slider = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
+
+            <Carousel>
+                <div className="h-[550px] w-full">
+                    <img className="h-full w-full" src="https://i.ibb.co.com/ZXYLB70/05ed3663-71ba-4e60-ae36-13f279867f55.jpg" />
+                </div>
+                <div className="h-[550px] w-full">
+                    <img className="h-full w-full" src="https://i.ibb.co.com/sjyHtmc/0a9ddc30-5d75-4959-82a9-48b88b2303df-1.jpg" />
+                </div>
+                <div className="h-[550px] w-full">
+                    <img className="h-full w-full" src="https://i.ibb.co.com/QkK12XS/thumbnails-7454bcba7bb17c330d9a239a9c49a3dd-goplay-baaji.webp" />
+                </div>
+            </Carousel>
         </div>
     );
 };
