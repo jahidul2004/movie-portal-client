@@ -1,6 +1,7 @@
 import { Link, useLoaderData } from "react-router-dom";
 import Slider from "./Slider";
 import MovieCard from "./MovieCard";
+import NewsLatter from "./NewsLatter";
 
 const Home = () => {
     const movies = useLoaderData();
@@ -125,6 +126,8 @@ const Home = () => {
                     </p>
                 ))}
             </div>
+
+            <NewsLatter></NewsLatter>
         </div>
     );
 };
