@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
+
 const LatestBlog = () => {
     return (
-        <div>
+        <div className="my-10">
             <h1 className="text-3xl font-bold text-[#e50912] m-4 text-center py-6">
                 Latest Blog <br />
                 ------------------------------
@@ -23,9 +25,9 @@ const LatestBlog = () => {
                             this film.
                         </p>
                         <div className="card-actions justify-start">
-                            <button className="btn bg-[#e50912] text-white">
+                            <Link to={'/trendingNow'} className="btn bg-[#e50912] text-white">
                                 Read More
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -47,9 +49,9 @@ const LatestBlog = () => {
                             this film.
                         </p>
                         <div className="card-actions justify-start">
-                            <button className="btn bg-[#e50912] text-white">
+                            <Link to={'/trendingNow'} className="btn bg-[#e50912] text-white">
                                 Read More
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -71,9 +73,9 @@ const LatestBlog = () => {
                             this film.
                         </p>
                         <div className="card-actions justify-start">
-                            <button className="btn bg-[#e50912] text-white">
+                            <Link to={'/trendingNow'} className="btn bg-[#e50912] text-white">
                                 Read More
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

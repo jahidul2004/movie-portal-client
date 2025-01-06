@@ -16,7 +16,7 @@ const NewsLatter = () => {
         form.reset();
     };
     return (
-        <div className="mx-5 my-10 p-10 shadow-xl rounded-lg flex flex-col justify-center items-center">
+        <div className="mx-5 my-10 mt-10 md:mt-20 p-10 shadow-xl rounded-lg flex flex-col justify-center items-center">
             <h1 className="text-center leading-12 text-3xl font-bold text-[#e50912] mb-5">
                 Subscribe to Movie Portal <br /> Weekly News latter
             </h1>

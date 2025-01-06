@@ -128,9 +128,8 @@ const Home = () => {
                 ))}
             </div>
 
-            <NewsLatter></NewsLatter>
-
             <LatestBlog></LatestBlog>
+            <NewsLatter></NewsLatter>
         </div>
     );
 };
