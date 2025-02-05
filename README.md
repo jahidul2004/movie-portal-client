@@ -1,3 +1,6 @@
+![Repository Banner](https://i.ibb.co.com/DPDRnWCF/Screenshot-47.png)
+
+
 # Movie Portal📽️
 
 [Visit the live site](https://movie-portal-fe625.web.app/)
